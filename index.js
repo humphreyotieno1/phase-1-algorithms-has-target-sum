@@ -1,17 +1,49 @@
 function hasTargetSum(array, target) {
-  // Write your algorithm here
+  const seenNumbers = new Set();
+
+  for (let i = 0; i < array.length; i++) {
+    const currentNumber = array[i];
+    const difference = target - currentNumber;
+
+    if (seenNumbers.has(difference)) {
+      // Found a pair
+      return true;
+    }
+
+    seenNumbers.add(currentNumber);
+  }
+
+  // No pair found
+  return false;
 }
 
 /* 
-  Write the Big O time complexity of your function here
+   Time complexity: O(n)
+   Space complexity: O(n)
 */
 
 /* 
-  Add your pseudocode here
+Pseudocode:
+  1. Create an empty set to store the numbers we have seen so far.
+  2. Iterate through the array.
+  3. For each number in the array, calculate the difference between the target and the current number.
+  4. Check if the difference is already in the set. If yes, return true (we found a pair).
+  5. If the difference is not in the set, add the current number to the set.
+  6. If the loop completes without finding a pair, return false.
 */
 
 /*
-  Add written explanation of your solution here
+  The hasTargetSum function uses a set to efficiently check 
+  if there exists a pair of numbers in an array that adds up to a 
+  specified target value. It iterates through the array, 
+  maintaining a set of seen numbers. For each number, it 
+  calculates the required complementary value needed to reach the target. 
+  If this complementary value is found in the set, the function 
+  returns true, indicating the presence of a pair. If the loop completes 
+  without finding a pair, the function returns false. The algorithm has a 
+  time complexity of O(n), where n is the array length, and a space 
+  complexity of O(n) due to the set. The function is tested with 
+  diverse scenarios to ensure its correctness.
 */
 
 // You can run `node index.js` to view these console logs
